@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Galeri Produk - Teralis Minimalis & Lainnya</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    background: #1e3a8a;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  nav {
+    background: white;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    display: flex;
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+  nav button {
+    flex: 1 0 auto;
+    border: none;
+    background: none;
+    padding: 0.8rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #1e40af;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+  nav button.active,
+  nav button:hover {
+    border-bottom: 3px solid #1e40af;
+    background: #e0e7ff;
+  }
+  main {
+    max-width: 960px;
+    margin: 1rem auto 2rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
+    gap: 1rem;
+  }
+  .card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  }
+  .card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .card-content {
+    padding: 0.75rem 1rem 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-title {
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    color: #1e40af;
+  }
+  .card-desc {
+    font-size: 0.85rem;
+    color: #555;
+    flex-grow: 1;
+  }
+  /* Mobile friendly scroll for nav */
+  nav::-webkit-scrollbar {
+    height: 6px;
+  }
+  nav::-webkit-scrollbar-thumb {
+    background: #a5b4fc;
+    border-radius: 3px;
+  }
+  /* Responsive for mobile small */
+  @media (max-width: 400px) {
+    nav button {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.8rem;
+    }
+    header {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Modal styles */
+  #modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  #modal.active {
+    display: flex;
+  }
+  #modal img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  }
+  #modal .caption {
+    color: white;
+    margin-top: 0.75rem;
+    text-align: center;
+    max-width: 90vw;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  #modal .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+  }
+  #modal .close-btn:focus {
+    outline: 2px solid #fff;
+  }
+
+  /* Contact section styles */
+  footer {
+    background: #1e3a8a;
+    color: white;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  footer a {
+    color: #a5b4fc;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  footer a:hover,
+  footer a:focus {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<header>
+  GALERI PRODUK BENGKEL LAS JM BAJA
+</header>
+<footer>
+  <p>Hubungi :</p>
+  <p>📞 WhatsApp : <a href="https://wa.me/6281365727546" target="_blank" rel="noopener noreferrer">0813 6572 7546 ( DIRAN SINOPA )</a></p>
+  <p>📍 Lokasi Bengkel : ( JM BAJA ) Jl. Ceras Km 8, Perawang</p>
+</footer>
+<nav aria-label="Filter Produk">
+  <button class="active" data-category="all" aria-pressed="true">SEMUA</button>
+  <button data-category="teralis">TERALIS JENDELA</button>
+  <button data-category="pagar">PAGAR SORONG</button>
+  <button data-category="balkon">BALKON</button>
+  <button data-category="pintu">PINTU</button>
+  <button data-category="kanopi">KANOPI</button>
+  <button data-category="mainan">MAINAN TK</button>
+</nav>
+<main>
+  <section class="gallery-grid" id="gallery" aria-live="polite">
+    <!-- Product Cards -->
+    <!-- Teralis Minimalis -->
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3M7YomxfpDzJwFbV6floiu-M2UC5vGftXuw&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 1</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW2aiQ5SyPVDs42IVrlxVN1bmlRWB-VxDDVQ&s"Teralis jendela putih minimalis modern" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 2</h3>
+        <p class="card-desc">Teralis jendela dengan desain modern minimalis warna putih untuk tampilan bersih dan aman.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf4Y2A_6EOnQrPt-3TA8qHVin0V1jJr8NM5w&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 3</h3>
+        <p class="card-desc">Model teralis besi minimalis dengan warna hitam elegan, cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGaur-GpOZ4BpRm5wMjZRuj0qwWGV-oEAysQ&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 4</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW0D6q9C4Q2Vd_KQRCZHz5Ux8VDxKzGrdRxQ&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 5</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7qul3-lfg90y0szhpmf1"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 6</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://down-id.img.susercontent.com/file/sg-11134201-23010-s987dahfyvmv4f"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 7</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE1mJG4l1YdG4ecVlZqSxIsAFrJ3HUkxNNSg&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 8</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLR4YXKVnXjc77vDdZGW2dEDExlVZWofqZtA&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 9</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdeHQcaUzr1ZmD0wRGq525OkdIUAUuOhyUeoPEIN4Z4tBmY82lektTgriicPDoVuQJ868&usqp=CAU"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 10</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://images.tokopedia.net/img/cache/250-square/VqbcmM/2023/2/11/8cdaa9ad-afb7-466c-8c28-e5ca56128b90.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 11</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://images.tokopedia.net/img/cache/250-square/VqbcmM/2021/7/27/301cc028-b630-45f4-8b87-b889eab063f2.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 12</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7quky-lhrhhm2lurca04_tn.webp"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 13</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://www.99.co/id/panduan/wp-content/uploads/2025/03/26135351/gambar-teralis-minimalis.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 14</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTXZITd-zpGfMICI6rZv2kO0JUsXG-PYZCfA&s"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 15</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 270.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7r991-lwtzyd7dmj70a5"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 16</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 330.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://i.pinimg.com/originals/ec/88/c7/ec88c79f7e77e2dd06ebaf0a9568a855.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 17</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 420.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://i.pinimg.com/236x/e6/2b/5b/e62b5bacb0e36764590e23e69ef2c53c.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 18</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 420.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://i.pinimg.com/236x/89/ed/1a/89ed1ab5231a0bfd2f62ce8ffdbe9651.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 19</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 420.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="teralis">
+      <img src="https://i.pinimg.com/236x/29/e6/d9/29e6d965da02a554605c3bfd072b4493.jpg"Teralis besi minimalis hitam elegan" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Teralis Model 20</h3>
+        <p class="card-desc">Model teralis besi minimalis , cocok untuk keamanan dan estetika.</p>
+        <h3 class="card-title">Rp 420.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+
+    <!-- Pagar Sorong -->
+    <article class="card" data-category="pagar">
+      <img src="https://cnc-magazine.oramiland.com/parenting/images/pintu_pagar_minimalis-1.width-800.format-webp.webp" alt="Model 1" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 1</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://filebroker-cdn.lazada.co.id/kf/Sca06a392fd8f4695980e2b67b9d9b8f1K.jpg" alt="Model 2" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 2</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg_82aJTTREBq8vBpLy98gQluyCXg122AIseGUF5mwk0BmVGp3JtV6QCAQdWi94AsMywk&usqp=CAU" alt="Model 3" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 3</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://berkahjayamakmur.biz.id/uploads/jual20231114-051739-pagar-7.webp" alt="Model 4" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 4</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/7/23/b395fcbb-2ee4-48da-92bf-abbc5ebb3eb3.jpg" alt="Model 5" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 5</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://down-id.img.susercontent.com/file/479cd6ebc7f1c3f6bef75cd068690ec1" alt="Model 6" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 6</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://down-id.img.susercontent.com/file/sg-11134201-23010-sdhy8lis2smva3" alt="Model 7" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 7</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://pinhome-blog-assets-public.s3.ap-southeast-1.amazonaws.com/2022/09/1.7-pinterest.webp" alt="Model 8" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 8</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/700/product-1/2019/10/2/6575419/6575419_73dc4429-a67c-4cf0-b08a-5fa33ed5cadd_538_538.jpg" alt="Model 9" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 9</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://img.lazcdn.com/g/ff/kf/Sb895d8776ea34648b0e3e283c61a31fbt.jpg_720x720q80.jpg" alt="Model 10" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 10</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/5/27/86e1f347-6231-4ab6-a67c-5694c4383e44.jpg" alt="Model 11" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 11</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMU7Zk2JwK92WcrV_GACESImxvVOP7KZmNEeBZlYbS9gSqUS9TSt4pXhhRD6cdFnpEHlk&usqp=CAU" alt="Model 12" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Model 12</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-92688825/no_brand_pagar_plat_laser_cutting_minimalis_moderen_full06_969600d6.jpg" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2023/5/10/0351a994-d4a0-4d4b-bd33-eaebc2b10b91.jpg" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/6/4/cc479b11-1b17-42b4-8eb0-ddb37d1c5e29.jpg" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRqkGSKYD3DdiYH9WrfBkTR2sDEjkY5C_f00zKi4hgKICqsn-1KKrhSxMW6HtiuE3q1DA&usqp=CAU" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/26/a221c3c9-e1e1-4d1d-b3eb-edfbe5f88532.jpg" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/6/8/0ecf94e8-6087-4449-a042-6294c423b1fd.jpg" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://media-public.dekoruma.com/article/2025/02/13.webp" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pagar">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7qukz-lh0rou69sz3n17" alt="Model Cutting" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pagar Sorong Cutting</h3>
+        <p class="card-desc">Pagar sorong material besi dan desain simple cocok untuk keamanan rumah dan menambah nilai estetika rumah.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    
+    
+    <!-- Balkon -->
+    <article class="card" data-category="balkon">
+      <img src="https://www.lamudi.co.id/journal/wp-content/uploads/2023/11/1-12.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 1</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://i.ytimg.com/vi/re45---tt3Y/maxresdefault.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 2</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://bikinrumah.co.id/wp-content/uploads/2023/11/contoh-gambar-railing-balkon-minimalis-wiremesh.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 3</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://events.rumah123.com/wp-content/uploads/sites/38/2023/10/02140340/Railing-Balkon-Minimalis-Modern-1024x614.jpeg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 4</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLQ8rPVuLGzXa79SO_3A8VtSefmD2YADZefQzhvWqeCullVXgs3AiLtahQzpzKkOoRbX9sAWnELEdPqINY5-hUzJW5J9PBlYiOe_YX-D_zAR1H-SJMHyoNzq_wI7FGL3lj9D5jUzxEloDN/s548/8+Gambar+Railing+Balkon+Klasik+%2528Cocok+Untuk+Rumah+Minimalis.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 5</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/3/19/e60d9262-edd8-4b83-b903-67f4a7a0b770.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 6</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2023/6/1/a8d3b665-e772-40dc-b9d7-49f4e019e028.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 7</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvopfQZ1bxDxAl8xCkCrxmFWEuskKjKQiNTHpENZGwpTwVW-xw94D5FrQfT492nkogp34&usqp=CAU" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 8</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDz1UrgewB1vzPYfEd_QZNg9NRz_M1LWlVKXoslNJ02tLLTGy6GXMA-bc65kIAlY32p1U&usqp=CAU" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 9</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgv7lxYSVaTfxn9fXPzvWnlGieKML2y18IVjEV6tjMyHaWgwIEWW-Y-wvGpxLXr0BapA_Fj8Tqda0cTiRZNbKBQNV7o6Fe78cK_3hozvzNYOKD6Vfq15OZMFAfUJF7WAZzCWbFvsBqxZ4aVVpWKFDTpSDcXt9GdgvO5FK4y15CMzctYhbS5X0VzPqYy/s3840/Railing%20Tangga%20dan%20Railing%20balkon%20dari%20Bahan%20Besi%20(3).jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 10</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/8/3/59705bb8-70d3-4ae7-a2eb-e18e2993c8e6.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 11</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://i.pinimg.com/originals/03/2e/2d/032e2d8cc7998601ac864b3c07596363.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 12</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/12/19/fb69d3c8-5f96-45e7-b41e-83b373865ae8.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 13</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://i.pinimg.com/originals/20/f7/77/20f77764e15aad15bfc9eb71cb147b9d.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 14</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://i.pinimg.com/236x/73/49/b5/7349b510a4f347f599babfc3d2aff003.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model 15</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2024/5/6/66390987-c02f-4abb-8fe9-85936c866413.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model Cutting</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTS8yL_5_gEaEDLSDIIkqeiUy1pXgtMNJp55ztUcE1nk95v-o2HcA3H67xZRDPwWpq1wU&usqp=CAU" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model Cutting</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m2khckvlyoaa26" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model Cutting</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9S8hPN_GE_e5cNwib54jVg5VftF3v5pjt4w20mV6uHDx0ZFus5n2znak9heH-9eEAqcpxxC0GrQlaU_Q0jYdSSA0FMFFY1qSKQO6DAMmhda_j62oItxsVawZyN72M4EI4vNBbaKigYF12/s2048/10.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model Cutting</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="balkon">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrisX9nDh8b4Vw2hXPmEI_PrTxMX_S05bfiDskc4sw4To7CeX3ALVPihhLUSCsTM2Egrwf-jh-BC6lJtO7OGNuAJBYqrPD5biIzwYX4GrpoPP86BzYJOXdzrcMXiwB0zICLUsZCtwD1lbT/s2048/harga-pagar-cutting-laser-+%252849%2529.jpg" alt="Balkon rumah dengan railing besi minimalis" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Balkon Model Cutting</h3>
+        <p class="card-desc">Balkon dengan railing besi minimalis yang memperindah tampilan luar rumah anda.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+        
+
+    <!-- Pintu -->
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXjGOtB841ibFp_ghFiYi1oviEny2NO2t9ZA&s" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 1</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Sg64xOKNAzJTG9tQyl77OzGTcT-biuAlcE_qWWIhme02wz3n81cUc_lVuuf9LOgg-Tw&usqp=CAU" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 2</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://img.lazcdn.com/g/p/4e9fba88dad7391d2bdef38d9feb358f.jpg_360x360q80.jpg_.webp" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 3</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBg5N_YS1w7yoCIn10NtiaJ74X0HxHiU9VKbntsKG43f1olqTmP2YVtt5PPYKN9XR7wJk&usqp=CAU" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 4</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbH-XDom0RChjOvsjPHgZtHNUSZxQ6KpAqEoSk1bHq8IBH1xwN9isMZzFCELisG1qerBc&usqp=CAU" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 5</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbdYVvlqelVXJW5-i887H0K-USpSjNEzkDwGbZcZaHZdlbp_wKrw1ONRLxvej9ru4MXY&usqp=CAU" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 6</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-ll4yy0lkdbgs65" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 7</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/12/7/bbfc2115-8d35-474d-bbc0-f3cf8098d471.jpg" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 8</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://img.lazcdn.com/g/ff/kf/Scba03a76ef6347509b60e5c7d89c1f5cj.jpg_360x360q80.jpg_.webp" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 1 Model 9</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98u-lwtjgoge3fq3f9" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Plat Buka 1 Model 10</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/9/28/058be684-240a-48bc-bff2-75ced261c2d5.jpg" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 1</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2023/2/25/94dece74-287a-4796-9266-d69eeaad535a.jpg" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 2</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://image1ws.indotrading.com/s3/productimages/webp/co21195/p139474/w300-h300/94c762e9-d842-4b73-b477-79ec694c8577w.jpg" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 3</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHcStfYgw9Xys0AT6ZyVIemm8eQ6HNYkdQ&s" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 4</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgnkGPNuz9a7HSaQbz_dZyNNquFtpdt64jmA&s" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 5</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_Can8d4Ec8eYgsr8tW1Qd8lqazo_KWsrdvt-Mzq48hPY8vb4PiM4RNziQUUaX8BmXK4&usqp=CAU" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 6</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIXMEwd8B7zDTUqgs1_tRYMsWrwFCvqLgrTg&s" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 7</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyVBzlO9LQAvyOjYwEhkvKq76ygbcuz0pRWA&s" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 8</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="pintu">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbuHF10kMv8Qjnherq3snrfCcW6AH0Rd87I6awQoo2_Ww0AwrQnyGYdkL7ONFDDYGF4fg&usqp=CAU" alt="Pintu kayu minimalis coklat gelap" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Pintu Buka 2 Model 9</h3>
+        <p class="card-desc">Pintu Besi yang di desain minimalis yang elegan dan kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+
+    <!-- Kanopi -->
+    <article class="card" data-category="kanopi">
+      <img src="https://d3p0bla3numw14.cloudfront.net/news-content/img/2021/06/24152001/Model-Kanopi-Minimalis.jpg" alt="Kanopi minimalis warna putih bersih" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Kanopi Besi Model 1</h3>
+        <p class="card-desc">Kanopi rumah minimalis warna putih menambah estetika dan proteksi dari cuaca.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="kanopi">
+      <img src="https://bluescopezacs.id/files/Inspirasi%20model%20kanopi/Kanopi%20Inspirasi.jpg" alt="Kanopi minimalis warna putih bersih" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Kanopi Besi Model 2</h3>
+        <p class="card-desc">Kanopi rumah minimalis warna putih menambah estetika dan proteksi dari cuaca.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="kanopi">
+      <img src="https://www.99.co/id/panduan/wp-content/uploads/2025/03/26134751/gambar-kanopi-baja-ringan-sederhana.jpg" alt="Kanopi minimalis warna putih bersih" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Kanopi Baja Ringan Kanal/Taso</h3>
+        <p class="card-desc">Kanopi rumah minimalis warna putih menambah estetika dan proteksi dari cuaca.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+
+    <!-- Mainan TK -->
+    <article class="card" data-category="mainan">
+      <img src="https://www.nirwanafiberglass.com/wp-content/uploads/2024/09/Jual-Tangga-Majemuk-Custom.jpg" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/10/19/c2a3e9e4-a940-4b81-b570-b96f95626864.jpg" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_xmdnGvkHBV4vBiztuJN93oxoHVjCLPoCiJMyAo5eNyBbOGrInOxECDX-SoljQJWYvUs&usqp=CAU" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE0ZFcRs-qCKkwqPGgwnDS3xE-8VMV-VWOmg&s" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://produsenplayground.net/wp-content/uploads/2021/06/Produksi-Mainan-Anak-TK-Ciwandan-Cilegon.jpeg" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF4KqehNGhCvLC8mv80lFgt6zG7aDAMzhA_LX1m2s260BhIddKNS_wpIgCGtrgj9_OJpw&usqp=CAU" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://bengkellasbali.co.id/wp-content/uploads/2024/10/a-mainan-anak-tk.jpg" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://produsenperosotan.com/wp-content/uploads/2024/06/Nama-nama-alat-permainan-TK-outdoor.png" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif </h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98x-lshpyd8m2fv118" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Mainan TK Edukatif</h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+    <article class="card" data-category="mainan">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1234GvXtHd8R6sKMqus_lFVKzcRgQ1fJ-gNDQOgCA0L-6rYtoyTZZisTV9VrPqZZvWJ0&usqp=CAU" alt="Mainan TK edukatif kayu" tabindex="0" />
+      <div class="card-content">
+        <h3 class="card-title">Gawang Bola</h3>
+        <p class="card-desc">Mainan edukatif berbahan Besi yang yang kokoh.</p>
+        <h3 class="card-title">Rp 1.200.000</h3>
+        <p class="card-desc">Cash Dan Credit ( S&K Berlaku )</p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<!-- Modal for image -->
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
+  <button class="close-btn" aria-label="Tutup gambar">&times;</button>
+  <img src="" alt="" />
+  <div class="caption" id="modal-caption"></div>
+</div>
+
+<footer>
+  <p>Hubungi :</p>
+  <p>📞 WhatsApp : <a href="https://wa.me/6281365727546" target="_blank" rel="noopener noreferrer">0813 6572 7546 ( DIRAN SINOPA )</a></p>
+  <p>📍 Lokasi Bengkel : ( JM BAJA ) Jl. Ceras Km 8, Perawang</p>
+</footer>
+
+<script>
+  (function () {
+    const navButtons = document.querySelectorAll('nav button');
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = modal.querySelector('img');
+    const modalCaption = modal.querySelector('.caption');
+    const modalCloseBtn = modal.querySelector('.close-btn');
+
+    // Filter category function
+    function setActiveButton(button) {
+      navButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
+    }
+
+    function filterCategory(category) {
+      const cards = gallery.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+          card.setAttribute('aria-hidden', 'false');
+        } else {
+          card.style.display = 'none';
+          card.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        setActiveButton(button);
+        filterCategory(button.dataset.category);
+      });
+    });
+
+    // Modal open function
+    function openModal(img) {
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modalCaption.textContent = img.alt;
+      modal.classList.add('active');
+      modalCloseBtn.focus();
+      // Disable scrolling on body
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Modal close function
+    function closeModal() {
+      modal.classList.remove('active');
+      modalImg.src = '';
+      modalImg.alt = '';
+      modalCaption.textContent = '';
+      // Enable scrolling on body
+      document.body.style.overflow = '';
+    }
+
+    // Handle image click
+    gallery.querySelectorAll('.card img').forEach(img => {
+      img.addEventListener('click', () => openModal(img));
+      img.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(img);
+        }
+      });
+    });
+    // Handle close button click
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Handle click outside image closes modal
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Handle ESC key closes modal
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
+
